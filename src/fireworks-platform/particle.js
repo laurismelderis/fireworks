@@ -7,6 +7,7 @@ export default class Particle{
 		this.H = canvaHeight;
 		this.particles = [];
 		this.drawing = new Drawing(); //Array
+		this.drawing.initCanvas(document.getElementById('draw-platform'));
 	}
 	initialize(){
 		this.particles.push({x: 250, y: this.H, xDir: (Math.random()*8)-4,
@@ -16,7 +17,7 @@ export default class Particle{
 	}
 	explode(x, y, duration, particleCount){
 		let dir = this.calculateDir(x, y, duration, particleCount); //Array
-		for (let i = 0; i < particleCount; i++){
+		for (let i = 0; i < dir.length; i++){
 			let d = dir[i];
 			this.particles.push({x, y, xDir: d.vx, yDir: d.vy, radius: 3});
 		}
@@ -24,7 +25,7 @@ export default class Particle{
 	calculateDir(x, y, duration, particleCount){
 		let dir = [];
 		let draw = this.drawing.importDrawing(particleCount);
-		for (let i = 0; i < particleCount; i++){
+		for (let i = 0; i < draw.length; i++){
 			let xDir = (draw[i].x) / duration; //Paatrinajums
 			let yDir = (draw[i].y) / duration - 1e-3 / 2;
 			dir.push({vx: xDir, vy: yDir});

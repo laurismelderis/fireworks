@@ -16,12 +16,12 @@ body{
 	background-color: #6f73de;
 }
 .shoot-nav{
-	margin: 8 0;
+	margin: 8px 0;
 	display: inline-block;
 }
 .shoot-nav #particleCount{
 	width: 44px;
 }
 .draw-nav{
-	margin: 0 0 8 0;
+	margin: 0 0 8px 0;
 }

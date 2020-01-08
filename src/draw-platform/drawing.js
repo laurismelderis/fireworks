@@ -3,44 +3,55 @@ export default class Drawing{
 	constructor(){
 		// Array 'coordinates' requires object of x and y values
 		this.coordinates = [];
-		this.newCoordinates = [];
-		this.count = 0;
+	}
+	initCanvas(canvas){
+		this.W = canvas.width = 500;
+		this.H = canvas.height = 500;
+		let ctx = canvas.getContext('2d');
+		let cursorX, cursorY, counter = 0;
+
+		function drawCircle(x, y, radius){
+			ctx.beginPath();
+			ctx.fillStyle = 'black';
+			ctx.ellipse(x, y, radius, radius, -90*Math.PI/180, 360*Math.PI/180, false);
+			ctx.fill();
+		}
+		canvas.addEventListener('mousedown', (evt) => {
+			cursorX = evt.offsetX;
+			cursorY = evt.offsetY;
+			this.importCoords(cursorX, cursorY);
+			drawCircle(cursorX, cursorY, 3);
+			counter++;
+		});
 	}
 	importDrawing(particleCount){
-		this.coordinates.length = 0;
-		
-		this.circleDrawing(particleCount);
-		// this.createDrawing(particleCount);
-		// if (!createDrawing(particleCount)){
-		// } else{
-		
-		// }
-		
-		return this.coordinates;
+		if (this.coordinates.length == 0){
+			return this.circleDrawing(particleCount);
+		} else {
+			return this.createDrawing(particleCount);
+		}
 	}
 	importCoords(ex, ey){
 		this.coordinates.push({x:ex, y:ey});
-		this.count++;
-		console.log(this.coordinates);
 	}
-	createDrawing(count){
-		for (let i = 0; i < count; i++){
-			let nCoords = this.newCoordinates[i];
-			this.coordinates.push({x:nCoords.x, y:nCoords.y});
+	createDrawing(){
+		let coordinates = [];
+		for (let i = 0; i < this.coordinates.length; i++){
+			let nCoords = this.coordinates[i];
+			coordinates.push({x:(nCoords.x-(this.W/2))/3, y:(nCoords.y-(this.H/2))/3});
 		}
-		count = 0;
-		console.log("Drawing created");
-		
+		return coordinates;
 	}
 	/*Every function needs to push new values for array 'coordinates' */
 	circleDrawing(particleCount){
 		let x1, y1;
 		let times = 360/particleCount;
+		let coordinates = [];
 		for (let a = 0; a < 360; a += times){
 			x1 = (Math.cos(Math.PI*a/180)*25) - (Math.sin(Math.PI*a/180)*25);
 			y1 = (Math.sin(Math.PI*a/180)*25) + (Math.cos(Math.PI*a/180)*25);
-			this.coordinates.push({x:x1,y:y1});
+			coordinates.push({x:x1,y:y1});
 		}
-		
+		return coordinates;
 	}
 }
