@@ -1,0 +1,27 @@
+body{
+	margin:10;	
+}
+.canva-panel {
+	display: flex;
+	justify-content: center;
+	padding: 7px;
+	margin: 0;
+	background-color: #4c4c4c;
+	width: 1005px;
+}
+.canva-panel #fireworks-platform {
+	background-color: #04073e;
+}
+.canva-panel #draw-platform {
+	background-color: #6f73de;
+}
+.shoot-nav{
+	margin: 8 0;
+	display: inline-block;
+}
+.shoot-nav #particleCount{
+	width: 44px;
+}
+.draw-nav{
+	margin: 0 0 8 0;
+}

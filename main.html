@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fireworks</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="canva-panel">
+		<canvas id="fireworks-platform"></canvas>
+		<canvas id='draw-platform'></canvas>
+	</div>
+	<nav class="shoot-nav">
+		<button id='boom'>Shoot</button>
+		<input id="particleCount" placeholder="Count">
+	</nav>
+	<nav class="draw-nav">
+		<button id='saveDrawing'>Save</button>
+	</nav>
+	
+</body>
+<script src="src/fireworks-platform/index.js" type='module'></script>
+<script src="src/draw-platform/index.js" type='module'></script>
+</html>
