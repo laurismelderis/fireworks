@@ -9,14 +9,16 @@
 		<canvas id="fireworks-platform"></canvas>
 		<canvas id='draw-platform'></canvas>
 	</div>
-	<nav class="shoot-nav">
-		<button id='boom'>Shoot</button>
-		<input id="particleCount" placeholder="Count">
-	</nav>
-	<nav class="draw-nav">
-		<button id='saveDrawing'>Save</button>
-	</nav>
-	
+	<div class='buttons'>
+		<nav class="shoot-nav">
+			<button id='shoot'>Shoot</button>
+			<button id='specialShoot'>Special Shoot</button>
+		</nav>
+		<nav class="draw-nav">
+			<button id='clearDrawing'>Clear</button>
+			<button id='undoCoord'>Undo</button>
+		</nav>
+	</div>
 </body>
 <script src="src/fireworks-platform/index.js" type='module'></script>
 </html>

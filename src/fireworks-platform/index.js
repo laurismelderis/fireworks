@@ -9,12 +9,11 @@ let ctx = canvas.getContext('2d');
 
 let particle = new Particle(W, H);
 
-document.getElementById('boom').onclick = () => {
-	pCount = document.getElementById('particleCount').value;
-	if (pCount == ""){
-		pCount = 10;
-	}
-	particle.initialize();
+document.getElementById('shoot').onclick = () => {
+	particle.shoot();
+}
+document.getElementById('specialShoot').onclick = () => {
+	particle.specialShoot();
 }
 
 function animation(){

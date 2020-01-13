@@ -25,3 +25,7 @@ body{
 .draw-nav{
 	margin: 0 0 8px 0;
 }
+.buttons nav button {
+	width: 125px;
+	height: 25px;
+}

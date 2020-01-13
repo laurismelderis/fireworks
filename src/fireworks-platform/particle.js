@@ -9,11 +9,24 @@ export default class Particle{
 		this.drawing = new Drawing(); //Array
 		this.drawing.initCanvas(document.getElementById('draw-platform'));
 	}
-	initialize(){
+	shoot(){
 		this.particles.push({x: 250, y: this.H, xDir: (Math.random()*8)-4,
 												yDir: (Math.random()*-5)-10,
 												radius: 3,
 												shouldExplode: true});
+	}
+	specialShoot(){
+		let interval = -3;
+		let animate = window.setInterval(() => {
+			this.particles.push({x: 250, y: this.H, xDir: interval,
+													yDir: -12,
+													radius: 3,
+													shouldExplode: true});
+			if (interval >= 3){
+				window.clearInterval(animate);
+			}
+			interval++;
+		}, 200);
 	}
 	explode(x, y, duration, particleCount){
 		let dir = this.calculateDir(x, y, duration, particleCount); //Array
@@ -32,17 +45,15 @@ export default class Particle{
 		}
 		return dir;
 	}
-	update(pCount){
+	update(){
 		for(let i = this.particles.length-1; i >= 0; i--){
 			let particle = this.particles[i];
 			particle.x += particle.xDir;
 			particle.y += particle.yDir;
 			particle.yDir += this.gravity;
 			if (particle.yDir > 0 && particle.shouldExplode){
-				this.explode(particle.x, particle.y, 1000/120, pCount);
-				if (pCount != 0){
-					this.particles.splice(i, 1);
-				}
+				this.explode(particle.x, particle.y, 1000/120, 12);
+				this.particles.splice(i, 1);
 				particle.shouldExplode = false;
 			}
 			if (particle.y > this.H){

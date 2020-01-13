@@ -9,6 +9,7 @@ export default class Drawing{
 		this.H = canvas.height = 500;
 		let ctx = canvas.getContext('2d');
 		let cursorX, cursorY, counter = 0;
+		const radius = 3;
 
 		function drawCircle(x, y, radius){
 			ctx.beginPath();
@@ -20,9 +21,21 @@ export default class Drawing{
 			cursorX = evt.offsetX;
 			cursorY = evt.offsetY;
 			this.importCoords(cursorX, cursorY);
-			drawCircle(cursorX, cursorY, 3);
+			drawCircle(cursorX, cursorY, radius);
 			counter++;
 		});
+		document.getElementById('clearDrawing').onclick = () => {
+			this.coordinates = [];
+			ctx.clearRect(0, 0, this.W, this.H);
+		};
+		document.getElementById('undoCoord').onclick = () => {
+			this.coordinates.splice(this.coordinates.length-1, 1);
+			ctx.clearRect(0, 0, this.W, this.H);
+			for(let i = 0; i < this.coordinates.length;i++){
+				let coords = this.coordinates[i];
+				drawCircle(coords.x, coords.y, radius)
+			}
+		}
 	}
 	importDrawing(particleCount){
 		if (this.coordinates.length == 0){
