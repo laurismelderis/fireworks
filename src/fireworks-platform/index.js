@@ -1,6 +1,13 @@
 import Particle from './particle.js';
 
-let canvas = document.getElementById('fireworks-platform');
+let newDiv = document.createElement('div');
+newDiv.id = "canvas-panel";
+newDiv.className = "canvas-panel";
+let canvas = document.createElement('canvas');
+let prevDiv = document.getElementById("buttons");
+canvas.id = 'fireworks-platform';
+newDiv.appendChild(canvas);
+document.body.insertBefore(newDiv, prevDiv);
 let pCount;
 const W = canvas.width = 500;
 const H = canvas.height = 500;

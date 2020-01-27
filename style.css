@@ -9,10 +9,10 @@ body{
 	background-color: #4c4c4c;
 	width: 1005px;
 }
-.canva-panel #fireworks-platform {
+.canvas-panel #fireworks-platform {
 	background-color: #04073e;
 }
-.canva-panel #draw-platform {
+.canvas-panel #draw-platform {
 	background-color: #6f73de;
 }
 .shoot-nav{

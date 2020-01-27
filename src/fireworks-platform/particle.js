@@ -7,7 +7,11 @@ export default class Particle{
 		this.H = canvaHeight;
 		this.particles = [];
 		this.drawing = new Drawing(); //Array
-		this.drawing.initCanvas(document.getElementById('draw-platform'));
+		this.newDiv = document.getElementById('canvas-panel');
+		this.canvasDraw = document.createElement('canvas');
+		this.canvasDraw.id='draw-platform';
+		this.newDiv.appendChild(this.canvasDraw);
+		this.drawing.initCanvas(this.canvasDraw);
 	}
 	shoot(){
 		this.particles.push({x: 250, y: this.H, xDir: (Math.random()*8)-4,
